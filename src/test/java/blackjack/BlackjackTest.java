@@ -23,4 +23,21 @@ public class BlackjackTest extends TestCase {
 		assertEquals("A", card4.getRank());
 		
 	}
+	
+	
+	public void testCardtoString() {
+		
+		Card card1 = new Card("S", "2");
+		assertEquals("S2", card1.toString());
+		
+		Card card2 = new Card("D", "9");
+		assertEquals("D9", card2.toString());
+		
+		Card card3 = new Card("H", "A");
+		assertEquals("HA", card3.toString());
+		
+		Card card4 = new Card("C", "K");
+		assertEquals("CK", card4.toString());
+		
+	}
 }
