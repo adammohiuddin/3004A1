@@ -10,5 +10,17 @@ public class BlackjackTest extends TestCase {
 		assertEquals("S", card.getSuit());
 		assertEquals("7", card.getRank());
 		
+		Card card2 = new Card(D, 3);
+		assertEquals("D", card2.getSuit());
+		assertEquals("3", card2.getRank());
+		
+		Card card3 = new Card(H, Q);
+		assertEquals("H", card3.getSuit());
+		assertEquals("Q", card3.getRank());
+		
+		Card card4 = new Card(C, A);
+		assertEquals("C", card4.getSuit());
+		assertEquals("A", card4.getRank());
+		
 	}
 }
