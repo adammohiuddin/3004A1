@@ -40,4 +40,16 @@ public class BlackjackTest extends TestCase {
 		assertEquals("CK", card4.toString());
 		
 	}
+	
+	public void testFullDeck() {
+		
+		Deck deck = new deck();
+		deck.makeFullDeck();
+		
+		assertEquals("D2", deck.get(0));
+		assertEquals("HA", deck.get(51));
+	
+	}
+	
+	
 }
