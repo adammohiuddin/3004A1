@@ -43,8 +43,8 @@ public class BlackjackTest extends TestCase {
 	
 	public void testFullDeck() {
 		
-		Deck deck = new deck();
-		deck.makeFullDeck();
+		DeckOrHand deck = new DeckOrHand();
+		deck.makeDeck();
 		
 		assertEquals("D2", deck.get(0));
 		assertEquals("HA", deck.get(51));
