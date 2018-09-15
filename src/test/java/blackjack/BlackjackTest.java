@@ -46,8 +46,8 @@ public class BlackjackTest extends TestCase {
 		DeckOrHand deck = new DeckOrHand();
 		deck.makeDeck();
 		
-		assertEquals("D2", deck.get(0));
-		assertEquals("HA", deck.get(51));
+		assertEquals("D2", deck.getCard(0));
+		assertEquals("HA", deck.getCard(51));
 	
 	}
 	
