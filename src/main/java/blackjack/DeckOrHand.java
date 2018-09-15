@@ -16,4 +16,8 @@ public class DeckOrHand {
 			}	
 		}
 	}
+	
+	public Card getCard(int i) {
+		return this.cards.get(i);
+	}
 }
