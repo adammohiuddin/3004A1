@@ -48,6 +48,22 @@ public class BlackjackTest extends TestCase {
 		
 		assertEquals("D2", deck.getCard(0));
 		assertEquals("HA", deck.getCard(51));
+		
+		assertEquals("D5", deck.getCard(3));
+		assertEquals("D10", deck.getCard(8));
+		assertEquals("DK", deck.getCard(11));
+		
+		assertEquals("S2", deck.getCard(13));
+		assertEquals("S8", deck.getCard(19));
+		assertEquals("S6", deck.getCard(17));
+		
+		assertEquals("CK", deck.getCard(37));
+		assertEquals("CQ", deck.getCard(36));
+		assertEquals("CJ", deck.getCard(35));
+		
+		assertEquals("H7", deck.getCard(44));
+		assertEquals("HJ", deck.getCard(48));
+		assertEquals("HA", deck.getCard(51));
 	
 	}
 	
