@@ -3,6 +3,7 @@ package blackjack;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class DeckOrHand {
 	private ArrayList<Card> cards;
@@ -23,5 +24,19 @@ public class DeckOrHand {
 	
 	public String getCard(int i) {
 		return this.cards.get(i).toString();
+	}
+	
+	public void shuffleDeck() {
+		Random rand = new Random();
+		int randIndex = 0;
+		int size = this.cards.size();
+		ArrayList<Card> tempArray = new ArrayList<Card>();
+		for (int i = 0; i < size; i++) {
+			// using rand.nextInt((max - min) + 1) + min to have inclusivity
+			randIndex = rand.nextInt(this.cards.size());
+			tempArray.add(this.cards.get(randIndex));
+			this.cards.remove(randIndex);
+		}
+		this.cards = tempArray;
 	}
 }
