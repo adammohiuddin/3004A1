@@ -1,7 +1,7 @@
 package blackjack;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+//import static org.junit.Assert.*;
+//import static org.hamcrest.CoreMatchers.*;
 
 import junit.framework.TestCase;
 
@@ -148,6 +148,31 @@ public class BlackjackTest extends TestCase {
 		deck.removeCard(1);
 		
 		assertEquals(5, deck.size());
+		
+	}
+	
+	public void testDeckDraw() {
+		
+		DeckOrHand deck = new DeckOrHand();
+		Card card1 = new Card("S", "9");
+		Card card2 = new Card("H", "2");
+		Card card3 = new Card("D", "K");
+		Card card4 = new Card("C", "6");
+		
+		deck.addCard(card1);
+		deck.addCard(card2);
+		deck.addCard(card3);
+		deck.addCard(card4);
+		
+		DeckOrHand hand = new DeckOrHand();
+		hand.drawCard(deck);
+		assertEquals("C6", hand.getCard(0));
+		hand.drawCard(deck);
+		assertEquals("DK", deck.getCard(1));
+		hand.drawCard(deck);
+		assertEquals("H2", deck.getCard(1));
+		hand.drawCard(deck);
+		assertEquals("S9", deck.getCard(1));
 		
 	}
 	
