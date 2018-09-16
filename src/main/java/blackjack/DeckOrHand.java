@@ -39,4 +39,13 @@ public class DeckOrHand {
 		}
 		this.cards = tempArray;
 	}
+	
+	public void addCard(Card card) {
+		this.cards.add(card);
+	}
+	
+	public void removeCard(int i) {
+		this.cards.remove(i);
+	}
+	
 }
