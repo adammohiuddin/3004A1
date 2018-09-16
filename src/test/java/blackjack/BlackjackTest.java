@@ -175,4 +175,27 @@ public class BlackjackTest extends TestCase {
 		assertEquals("C6", hand.getCard(3).toString());
 		
 	}
+	
+	public void testShowingHand() {
+		DeckOrHand hand = new DeckOrHand();
+		Card card1 = new Card("H", "7");
+		Card card2 = new Card("C", "Q");
+		Card card3 = new Card("S", "2");
+		Card card4 = new Card("D", "10");
+		
+		hand.addCard(card1);
+		hand.addCard(card2);
+		hand.addCard(card3);
+		hand.addCard(card4);
+		
+		assertEquals("H7 CQ S2 D10 ", hand.showHand());
+		
+		hand.removeCard(1);
+		hand.removeCard(1);
+		
+		assertEquals("H7 D10 ", hand.showHand());
+		
+	}
+	
+	
 }
