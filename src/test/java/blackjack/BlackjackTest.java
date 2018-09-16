@@ -76,12 +76,18 @@ public class BlackjackTest extends TestCase {
 		deck.makeDeck();
 		deck.shuffleDeck();
 		
-		assertThat("SA", not(equalTo(String.valueOf(deck.getCard(25)))));
-		assertThat("C2", not(equalTo(String.valueOf(deck.getCard(26)))));
+		assertThat("D8", not(equalTo(String.valueOf(deck.getCard(6)))));
+		assertThat("D9", not(equalTo(String.valueOf(deck.getCard(7)))));
 		
+		assertThat("S8", not(equalTo(String.valueOf(deck.getCard(19)))));
+		assertThat("S9", not(equalTo(String.valueOf(deck.getCard(20)))));
 		
+		assertThat("C8", not(equalTo(String.valueOf(deck.getCard(32)))));
+		assertThat("C9", not(equalTo(String.valueOf(deck.getCard(33)))));
+		
+		assertThat("H8", not(equalTo(String.valueOf(deck.getCard(45)))));
+		assertThat("H9", not(equalTo(String.valueOf(deck.getCard(46)))));
 		
 	}
-	
 	
 }
