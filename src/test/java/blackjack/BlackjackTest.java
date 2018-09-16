@@ -117,4 +117,38 @@ public class BlackjackTest extends TestCase {
 		
 	}
 	
+	public void testDeckSize() {
+		
+		DeckOrHand deck = new DeckOrHand();
+		Card card1 = new Card("S", "9");
+		Card card2 = new Card("H", "2");
+		Card card3 = new Card("D", "K");
+		Card card4 = new Card("C", "6");
+		Card card5 = new Card("S", "2");
+		Card card6 = new Card("D", "J");
+		Card card7 = new Card("H", "7");
+		Card card8 = new Card("D", "A");
+		Card card9 = new Card("C", "A");
+		
+		deck.addCard(card1);
+		deck.addCard(card2);
+		deck.addCard(card3);
+		deck.addCard(card4);
+		deck.addCard(card5);
+		deck.addCard(card6);
+		deck.addCard(card7);
+		deck.addCard(card8);
+		deck.addCard(card9);
+		
+		assertEquals(9, deck.size());
+			
+		deck.removeCard(6);
+		deck.removeCard(5);
+		deck.removeCard(3);
+		deck.removeCard(1);
+		
+		assertEquals(5, deck.size());
+		
+	}
+	
 }
