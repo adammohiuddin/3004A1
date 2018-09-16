@@ -49,24 +49,24 @@ public class BlackjackTest extends TestCase {
 		DeckOrHand deck = new DeckOrHand();
 		deck.makeDeck();
 		
-		assertEquals("D2", deck.getCard(0));
-		assertEquals("HA", deck.getCard(51));
+		assertEquals("D2", deck.getCard(0).toString());
+		assertEquals("HA", deck.getCard(51).toString());
 		
-		assertEquals("D5", deck.getCard(3));
-		assertEquals("D10", deck.getCard(8));
-		assertEquals("DK", deck.getCard(11));
+		assertEquals("D5", deck.getCard(3).toString());
+		assertEquals("D10", deck.getCard(8).toString());
+		assertEquals("DK", deck.getCard(11).toString());
 		
-		assertEquals("S2", deck.getCard(13));
-		assertEquals("S8", deck.getCard(19));
-		assertEquals("S6", deck.getCard(17));
+		assertEquals("S2", deck.getCard(13).toString());
+		assertEquals("S8", deck.getCard(19).toString());
+		assertEquals("S6", deck.getCard(17).toString());
 		
-		assertEquals("CK", deck.getCard(37));
-		assertEquals("CQ", deck.getCard(36));
-		assertEquals("CJ", deck.getCard(35));
+		assertEquals("CK", deck.getCard(37).toString());
+		assertEquals("CQ", deck.getCard(36).toString());
+		assertEquals("CJ", deck.getCard(35).toString());
 		
-		assertEquals("H7", deck.getCard(44));
-		assertEquals("HJ", deck.getCard(48));
-		assertEquals("HA", deck.getCard(51));
+		assertEquals("H7", deck.getCard(44).toString());
+		assertEquals("HJ", deck.getCard(48).toString());
+		assertEquals("HA", deck.getCard(51).toString());
 	
 	}
 	
@@ -112,8 +112,8 @@ public class BlackjackTest extends TestCase {
 		deck.removeCard(2);
 		deck.removeCard(0);
 		
-		assertEquals("H2", deck.getCard(0));
-		assertEquals("C6", deck.getCard(1));
+		assertEquals("H2", deck.getCard(0).toString());
+		assertEquals("C6", deck.getCard(1).toString());
 		
 	}
 	
@@ -166,14 +166,13 @@ public class BlackjackTest extends TestCase {
 		
 		DeckOrHand hand = new DeckOrHand();
 		hand.drawCard(deck);
-		assertEquals("C6", hand.getCard(0));
+		assertEquals("S9", hand.getCard(0).toString());
 		hand.drawCard(deck);
-		assertEquals("DK", deck.getCard(1));
+		assertEquals("H2", hand.getCard(1).toString());
 		hand.drawCard(deck);
-		assertEquals("H2", deck.getCard(1));
+		assertEquals("DK", hand.getCard(2).toString());
 		hand.drawCard(deck);
-		assertEquals("S9", deck.getCard(1));
+		assertEquals("C6", hand.getCard(3).toString());
 		
 	}
-	
 }
