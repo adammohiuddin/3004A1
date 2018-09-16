@@ -1,5 +1,8 @@
 package blackjack;
 
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+
 import junit.framework.TestCase;
 
 public class BlackjackTest extends TestCase {
@@ -65,6 +68,19 @@ public class BlackjackTest extends TestCase {
 		assertEquals("HJ", deck.getCard(48));
 		assertEquals("HA", deck.getCard(51));
 	
+	}
+	
+	public void testShuffledDeck() {
+		
+		DeckOrHand deck = new DeckOrHand();
+		deck.makeDeck();
+		deck.shuffleDeck();
+		
+		assertThat("SA", not(equalTo(String.valueOf(deck.getCard(25)))));
+		assertThat("C2", not(equalTo(String.valueOf(deck.getCard(26)))));
+		
+		
+		
 	}
 	
 	
