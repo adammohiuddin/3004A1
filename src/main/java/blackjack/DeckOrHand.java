@@ -48,4 +48,7 @@ public class DeckOrHand {
 		this.cards.remove(i);
 	}
 	
+	public int size() {
+		return this.cards.size(); 
+	}
 }
