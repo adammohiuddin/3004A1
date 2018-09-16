@@ -90,4 +90,31 @@ public class BlackjackTest extends TestCase {
 		
 	}
 	
+	public void testDeckAddAndRemove() {
+		
+		DeckOrHand deck = new DeckOrHand();
+		Card card1 = new Card("S", "9");
+		Card card2 = new Card("H", "2");
+		Card card3 = new Card("D", "K");
+		Card card4 = new Card("C", "6");
+		Card card3 = new Card("S", "2");
+		Card card4 = new Card("D", "J");
+		
+		deck.addCard(card1);
+		deck.addCard(card2);
+		deck.addCard(card3);
+		deck.addCard(card4);
+		deck.addCard(card5);
+		deck.addCard(card6);
+		
+		deck.removeCard(5);
+		deck.removeCard(4);
+		deck.removeCard(2);
+		deck.removeCard(0);
+		
+		assertEquals("H2", deck.getCard(0));
+		assertEquals("C6", deck.getCard(1));
+		
+	}
+	
 }
