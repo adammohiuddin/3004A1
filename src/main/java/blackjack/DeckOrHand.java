@@ -56,4 +56,12 @@ public class DeckOrHand {
 		this.cards.add(deck.getCard(0));
 		deck.removeCard(0);
 	}
+	
+	public String showHand() {
+		String fullHand = "";
+		for (Card card : this.cards) {
+			fullHand += card.toString() + " ";
+		}
+		return fullHand;
+	}
 }
