@@ -22,8 +22,8 @@ public class DeckOrHand {
 		}
 	}
 	
-	public String getCard(int i) {
-		return this.cards.get(i).toString();
+	public Card getCard(int i) {
+		return this.cards.get(i);
 	}
 	
 	public void shuffleDeck() {
@@ -50,5 +50,10 @@ public class DeckOrHand {
 	
 	public int size() {
 		return this.cards.size(); 
+	}
+	
+	public void drawCard(DeckOrHand deck) {
+		this.cards.add(deck.getCard(0));
+		deck.removeCard(0);
 	}
 }
