@@ -206,11 +206,30 @@ public class BlackjackTest extends TestCase {
 		DeckOrHand hand5 = new DeckOrHand();
 		
 		// no aces
-		hand1.addCard(new Card("H", "7"));
-		hand1.addCard(new Card("S", "2"));
-		hand1.addCard(new Card("C", "J"));
+		hand1.addCard(new Card("H", "2"));
+		assertEquals(2, hand1.getHandValue());
+		hand1.addCard(new Card("S", "3"));
+		assertEquals(5, hand1.getHandValue());
+		hand1.addCard(new Card("C", "4"));
+		assertEquals(9, hand1.getHandValue());
+		hand1.addCard(new Card("D", "5"));
+		assertEquals(14, hand1.getHandValue());
+		hand1.addCard(new Card("H", "6"));
+		assertEquals(20, hand1.getHandValue());
+		hand1.addCard(new Card("S", "7"));
+		assertEquals(27, hand1.getHandValue());
+		hand1.addCard(new Card("C", "8"));
+		assertEquals(35, hand1.getHandValue());
+		hand1.addCard(new Card("D", "9"));
+		assertEquals(44, hand1.getHandValue());
+		hand1.addCard(new Card("H", "10"));
+		assertEquals(54, hand1.getHandValue());
+		hand1.addCard(new Card("S", "J"));
+		assertEquals(64, hand1.getHandValue());
+		hand1.addCard(new Card("C", "Q"));
+		assertEquals(74, hand1.getHandValue());
 		hand1.addCard(new Card("D", "K"));
-		assertEquals(29, hand1.getHandValue());
+		assertEquals(84, hand1.getHandValue());
 		
 		// one ace
 		// here the ace will count as 11
@@ -263,7 +282,7 @@ public class BlackjackTest extends TestCase {
 		assertEquals(21, hand1.getHandValue());
 		assertEquals(true, hand1.isAce11());
 		hand1.addCard(new Card("D", "2"));
-		assertEquals(21, hand1.getHandValue());
+		assertEquals(13, hand1.getHandValue());
 		assertEquals(false, hand1.isAce11());
 	
 	}
