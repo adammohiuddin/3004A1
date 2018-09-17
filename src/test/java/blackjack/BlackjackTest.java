@@ -256,4 +256,16 @@ public class BlackjackTest extends TestCase {
 		
 	}
 	
+	public void testIsAce11() {
+		DeckOrHand hand1 = new DeckOrHand();
+		hand1.addCard(new Card("H", "Q"));
+		hand1.addCard(new Card("C", "A"));
+		assertEquals(21, hand1.getHandValue());
+		assertEquals(true, hand1.isAce11());
+		hand1.addCard(new Card("D", "2"));
+		assertEquals(21, hand1.getHandValue());
+		assertEquals(false, hand1.isAce11());
+	
+	}
+	
 }
