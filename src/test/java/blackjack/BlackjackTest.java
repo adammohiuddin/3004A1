@@ -1,5 +1,6 @@
 package blackjack;
 
+
 //import static org.junit.Assert.*;
 //import static org.hamcrest.CoreMatchers.*;
 
@@ -197,5 +198,59 @@ public class BlackjackTest extends TestCase {
 		
 	}
 	
+	public void testValueOfHand() {
+		DeckOrHand hand1 = new DeckOrHand();
+		DeckOrHand hand2 = new DeckOrHand();
+		DeckOrHand hand3 = new DeckOrHand();
+		DeckOrHand hand4 = new DeckOrHand();
+		DeckOrHand hand5 = new DeckOrHand();
+		
+		// no aces
+		hand1.addCard(new Card("H", "7"));
+		hand1.addCard(new Card("S", "2"));
+		hand1.addCard(new Card("C", "J"));
+		hand1.addCard(new Card("D", "K"));
+		assertEquals(29, hand1.getHandValue());
+		
+		// one ace
+		// here the ace will count as 11
+		hand2.addCard(new Card("H", "Q"));
+		hand2.addCard(new Card("C", "A"));
+		assertEquals(21, hand2.getHandValue());
+		// here the ace will count as 1
+		hand2.addCard(new Card("D", "2"));
+		assertEquals(13, hand2.getHandValue());
+		
+		// two aces
+		// here one ace will count as 11 and one will count as 1
+		hand3.addCard(new Card("C", "A"));
+		hand3.addCard(new Card("D", "A"));
+		assertEquals(12, hand3.getHandValue());
+		// here both aces will count as 1
+		hand3.addCard(new Card("S", "5"));
+		assertEquals(7, hand3.getHandValue());
+		
+		// three aces
+		// here one ace will count as 11 and the other two will count as 1
+		hand4.addCard(new Card("C", "A"));
+		hand4.addCard(new Card("D", "A"));
+		hand4.addCard(new Card("S", "A"));
+		assertEquals(13, hand4.getHandValue());
+		// here all three aces will count as 1
+		hand4.addCard(new Card("D", "7"));
+		assertEquals(10, hand4.getHandValue());
+		
+		// four aces
+		// here one ace will count as 11 and the other three will count as 1
+		hand5.addCard(new Card("C", "A"));
+		hand5.addCard(new Card("D", "A"));
+		hand5.addCard(new Card("S", "A"));
+		hand5.addCard(new Card("H", "A"));
+		assertEquals(14, hand5.getHandValue());
+		// here both aces will count as 1
+		hand5.addCard(new Card("H", "K"));
+		assertEquals(14, hand5.getHandValue());
+		
+	}
 	
 }
