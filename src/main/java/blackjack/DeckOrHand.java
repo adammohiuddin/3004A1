@@ -70,44 +70,49 @@ public class DeckOrHand {
 		int aces = 0;
 		
 		for (Card card : this.cards) {	
-			if (card.getRank() == "2") {
+			switch (card.getRank()) {
+			case "2":
 				value += 2;
-			}
-			else if (card.getRank() == "3") {
+				break;
+			case "3":
 				value += 3;
-			}
-			else if (card.getRank() == "4") {
+				break;
+			case "4":
 				value += 4;
-			}
-			else if (card.getRank() == "5") {
+				break;
+			case "5":
 				value += 5;
-			}
-			else if (card.getRank() == "6") {
+				break;
+			case "6":
 				value += 6;
-			}
-			else if (card.getRank() == "7") {
+				break;
+			case "7":
 				value += 7;
-			}
-			else if (card.getRank() == "8") {
+				break;
+			case "8":
 				value += 8;
-			}
-			else if (card.getRank() == "9") {
+				break;
+			case "9":
 				value += 9;
-			}
-			else if (card.getRank() == "10") {
+				break;
+			case "10":
 				value += 10;
-			}
-			else if (card.getRank() == "J") {
+				break;
+			case "J":
 				value += 10;
-			}
-			else if (card.getRank() == "Q") {
+				break;
+			case "Q":
 				value += 10;
-			}
-			else if (card.getRank() == "K") {
+				break;
+			case "K":
 				value += 10;
-			}
-			else if (card.getRank() == "A") {
+				break;
+			case "A":
 				aces += 1;
+				break;
+				
+			default:
+				break;
 			}
 		}
 		
