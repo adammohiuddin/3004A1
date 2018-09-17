@@ -64,4 +64,62 @@ public class DeckOrHand {
 		}
 		return fullHand;
 	}
+	
+	public int getHandValue() {
+		int value = 0;
+		int aces = 0;
+		
+		for (Card card : this.cards) {	
+			if (card.getRank() == "2") {
+				value += 2;
+			}
+			else if (card.getRank() == "3") {
+				value += 3;
+			}
+			else if (card.getRank() == "4") {
+				value += 4;
+			}
+			else if (card.getRank() == "5") {
+				value += 5;
+			}
+			else if (card.getRank() == "6") {
+				value += 6;
+			}
+			else if (card.getRank() == "7") {
+				value += 7;
+			}
+			else if (card.getRank() == "8") {
+				value += 8;
+			}
+			else if (card.getRank() == "9") {
+				value += 9;
+			}
+			else if (card.getRank() == "10") {
+				value += 10;
+			}
+			else if (card.getRank() == "J") {
+				value += 10;
+			}
+			else if (card.getRank() == "Q") {
+				value += 10;
+			}
+			else if (card.getRank() == "K") {
+				value += 10;
+			}
+			else if (card.getRank() == "A") {
+				aces += 1;
+			}
+		}
+		
+		for (int i = 0; i < aces; i++) {
+			if (value > 10) {
+				value += 1;
+			}
+			else {
+				value += 11;
+			}
+		}
+		
+		return value;
+	}
 }
