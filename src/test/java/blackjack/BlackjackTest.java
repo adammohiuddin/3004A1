@@ -228,7 +228,8 @@ public class BlackjackTest extends TestCase {
 		assertEquals(12, hand3.getHandValue());
 		// here both aces will count as 1
 		hand3.addCard(new Card("S", "5"));
-		assertEquals(7, hand3.getHandValue());
+		hand3.addCard(new Card("S", "10"));
+		assertEquals(17, hand3.getHandValue());
 		
 		// three aces
 		// here one ace will count as 11 and the other two will count as 1
@@ -238,7 +239,8 @@ public class BlackjackTest extends TestCase {
 		assertEquals(13, hand4.getHandValue());
 		// here all three aces will count as 1
 		hand4.addCard(new Card("D", "7"));
-		assertEquals(10, hand4.getHandValue());
+		hand4.addCard(new Card("D", "4"));
+		assertEquals(14, hand4.getHandValue());
 		
 		// four aces
 		// here one ace will count as 11 and the other three will count as 1
@@ -249,7 +251,8 @@ public class BlackjackTest extends TestCase {
 		assertEquals(14, hand5.getHandValue());
 		// here both aces will count as 1
 		hand5.addCard(new Card("H", "K"));
-		assertEquals(14, hand5.getHandValue());
+		hand5.addCard(new Card("H", "2"));
+		assertEquals(16, hand5.getHandValue());
 		
 	}
 	
