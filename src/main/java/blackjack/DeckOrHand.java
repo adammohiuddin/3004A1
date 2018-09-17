@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class DeckOrHand {
 	private ArrayList<Card> cards;
+	private boolean aceIs11 = false;
 	final List<String> suit = Arrays.asList("D", "S", "C", "H");
 	final List<String> rank = Arrays.asList("2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A");
 	
@@ -65,6 +66,10 @@ public class DeckOrHand {
 		return fullHand;
 	}
 	
+	public boolean isAce11() {
+		return aceIs11;
+	}
+	
 	public int getHandValue() {
 		int value = 0;
 		int aces = 0;
@@ -116,12 +121,14 @@ public class DeckOrHand {
 			}
 		}
 		
+		aceIs11 = false;
 		for (int i = 0; i < aces; i++) {
 			if (value > 10) {
 				value += 1;
 			}
 			else {
 				value += 11;
+				aceIs11 = true;
 			}
 		}
 		
