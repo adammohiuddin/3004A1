@@ -1,6 +1,8 @@
 package blackjack;
 
 
+import java.util.ArrayList;
+
 //import static org.junit.Assert.*;
 //import static org.hamcrest.CoreMatchers.*;
 
@@ -285,6 +287,20 @@ public class BlackjackTest extends TestCase {
 		assertEquals(13, hand1.getHandValue());
 		assertEquals(false, hand1.isAce11());
 	
+	}
+	
+	public void testMakeDeckFromFile() {
+		ArrayList<String> fileInput = new ArrayList<String>();
+		fileInput.add("HQ");
+		fileInput.add("C4");
+		fileInput.add("D10");
+		DeckOrHand deck = new DeckOrHand();
+		deck.makeDeckFromFile(fileInput);
+		
+		assertEquals("HQ", deck.getCard(0).toString());
+		assertEquals("C4", deck.getCard(1).toString());
+		assertEquals("D10", deck.getCard(2).toString());
+
 	}
 	
 }
