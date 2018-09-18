@@ -23,6 +23,15 @@ public class DeckOrHand {
 		}
 	}
 	
+	public void makeDeckFromFile(ArrayList<String> cardInput) {
+		String s, r;
+		for (String string : cardInput) {
+			s = string.substring(0, 1);
+			r = string.substring(1, string.length());
+			this.cards.add(new Card(s, r));
+		}
+	}
+	
 	public Card getCard(int i) {
 		return this.cards.get(i);
 	}
