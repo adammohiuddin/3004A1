@@ -367,6 +367,81 @@ public class BlackjackTest extends TestCase {
 		Blackjack.createDeckAndPickUI(deck3, moves3, scanner3);
 		assertEquals(52, deck3.size());
 		assertEquals(0, moves3.size());
+		
+	}
+	
+	public void testPlayerTurn() {
+		DeckOrHand pHand1 = new DeckOrHand();
+		DeckOrHand pHand2 = new DeckOrHand();
+		DeckOrHand pHand3 = new DeckOrHand();
+		DeckOrHand pHand4 = new DeckOrHand();
+		DeckOrHand dHand1 = new DeckOrHand();
+		DeckOrHand dHand2 = new DeckOrHand();
+		DeckOrHand dHand3 = new DeckOrHand();
+		DeckOrHand dHand4 = new DeckOrHand();
+		DeckOrHand deck1 = new DeckOrHand();
+		DeckOrHand deck2 = new DeckOrHand();
+		DeckOrHand deck3 = new DeckOrHand();
+		DeckOrHand deck4 = new DeckOrHand();
+		ArrayList<String> moves1 = new ArrayList<>();
+		ArrayList<String> moves2 = new ArrayList<>();
+		
+		// using file input
+		// hit then stand
+		pHand1.addCard(new Card("H", "5"));
+		pHand1.addCard(new Card("C", "3"));
+		dHand1.addCard(new Card("D", "A"));
+		dHand1.addCard(new Card("S", "9"));
+		moves1.add("H");
+		moves1.add("S");
+		deck1.addCard(new Card("D", "3"));
+		deck1.addCard(new Card("H", "8"));
+		deck1.addCard(new Card("H", "10"));
+		Blackjack.playerTurn(pHand1, dHand1, moves1, deck1);
+		assertEquals(3, pHand1.size());
+		
+		// using file input
+		// hit then bust
+		pHand2.addCard(new Card("H", "5"));
+		pHand2.addCard(new Card("C", "3"));
+		dHand2.addCard(new Card("S", "9"));
+		dHand2.addCard(new Card("D", "A"));
+		moves2.add("H");
+		moves2.add("H");
+		moves2.add("H");
+		moves2.add("H");
+		deck2.addCard(new Card("D", "3"));
+		deck2.addCard(new Card("H", "8"));
+		deck2.addCard(new Card("H", "10"));
+		deck2.addCard(new Card("S", "6"));
+		Blackjack.playerTurn(pHand2, dHand2, moves2, deck2);
+		assertEquals(5, pHand2.size());
+		
+		// using console input
+		// hit then stand
+		pHand3.addCard(new Card("H", "5"));
+		pHand3.addCard(new Card("C", "3"));
+		dHand3.addCard(new Card("D", "A"));
+		dHand3.addCard(new Card("S", "9"));
+		deck3.addCard(new Card("D", "3"));
+		deck3.addCard(new Card("H", "8"));
+		deck3.addCard(new Card("H", "10"));
+		Blackjack.playerTurn(pHand3, dHand3, moves1, deck3);
+		assertEquals(3, pHand1.size());
+		
+		// using console input
+		// hit then bust
+		pHand4.addCard(new Card("H", "5"));
+		pHand4.addCard(new Card("C", "3"));
+		dHand4.addCard(new Card("S", "9"));
+		dHand4.addCard(new Card("D", "A"));
+		deck4.addCard(new Card("D", "3"));
+		deck4.addCard(new Card("H", "8"));
+		deck4.addCard(new Card("H", "10"));
+		deck4.addCard(new Card("S", "6"));
+		Blackjack.playerTurn(pHand3, dHand3, moves2, deck3);
+		assertEquals(5, pHand2.size());
+		
 	}
 	
 }
