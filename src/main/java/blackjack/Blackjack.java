@@ -9,8 +9,12 @@ public class Blackjack {
 	
 	private static final int maxHandValue = 21;
 	private static final int dealerSoftValue = 17;
+	
 	private static Scanner fileScanner;
+	private static Scanner playerConsole;
+	
 	public static boolean gameOver = false;
+	private static boolean usingFile = false;
 	
 	
 	public static DeckOrHand didBlackjackHappen(DeckOrHand playerHand, DeckOrHand dealerHand) {
@@ -68,6 +72,7 @@ public class Blackjack {
 		
 		if (command.startsWith("f")) {
 			
+			usingFile = true;
 			System.out.println("Please enter the filename in src/main/resources (ex: filename.txt)");
 			command = "src/main/resources/" + playerConsole.nextLine();
 
@@ -206,6 +211,30 @@ public class Blackjack {
 			gameOver = true;
 		}
 		
+	}
+	
+	
+	public static void main(String[] args) {
+		// Note: I have never actually played Blackjack before
+		
+		DeckOrHand deck = new DeckOrHand();
+		DeckOrHand playerHand = new DeckOrHand();
+		DeckOrHand dealerHand = new DeckOrHand();
+				
+		ArrayList<String> playerMovesFromFile = new ArrayList<>();
+		playerConsole = new Scanner(System.in);
+				
+		createDeckAndPickUI(deck, playerMovesFromFile, playerConsole);
+				
+		playerHand.drawCard(deck);
+		playerHand.drawCard(deck);
+		dealerHand.drawCard(deck);
+		dealerHand.drawCard(deck);
+				
+		playerTurn(playerHand, dealerHand, playerMovesFromFile, deck, playerConsole, usingFile);
+		dealerTurn(playerHand, dealerHand, deck, gameOver);
+
+		playerConsole.close();
 	}
 	
 }
