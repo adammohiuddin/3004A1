@@ -2,7 +2,7 @@ package blackjack;
 
 
 import java.util.ArrayList;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 //import static org.junit.Assert.*;
 //import static org.hamcrest.CoreMatchers.*;
@@ -475,7 +475,7 @@ public class BlackjackTest extends TestCase {
 		pHand1.addCard(new Card("C", "3"));
 		dHand1.addCard(new Card("D", "A"));
 		dHand1.addCard(new Card("S", "9"));
-		Blackjack.dealerTurn(pHand1, dHand1, deck1);
+		Blackjack.dealerTurn(pHand1, dHand1, deck1, false);
 		assertEquals(2, dHand1.size());
 		
 		// dealer has a better hand after taking cards
@@ -486,7 +486,7 @@ public class BlackjackTest extends TestCase {
 		deck2.addCard(new Card("D", "3"));
 		deck2.addCard(new Card("H", "8"));
 		deck2.addCard(new Card("S", "4"));
-		Blackjack.dealerTurn(pHand2, dHand2, deck2);
+		Blackjack.dealerTurn(pHand2, dHand2, deck2, false);
 		assertEquals(5, dHand2.size());
 		
 		// player has a better hand after dealer takes cards
@@ -498,7 +498,7 @@ public class BlackjackTest extends TestCase {
 		deck3.addCard(new Card("D", "3"));
 		deck3.addCard(new Card("H", "8"));
 		deck3.addCard(new Card("S", "4"));
-		Blackjack.dealerTurn(pHand3, dHand3, deck3);
+		Blackjack.dealerTurn(pHand3, dHand3, deck3, false);
 		assertEquals(5, dHand3.size());
 		
 		// tie
@@ -509,7 +509,7 @@ public class BlackjackTest extends TestCase {
 		deck4.addCard(new Card("D", "3"));
 		deck4.addCard(new Card("H", "8"));
 		deck4.addCard(new Card("S", "4"));
-		Blackjack.dealerTurn(pHand4, dHand4, deck4);
+		Blackjack.dealerTurn(pHand4, dHand4, deck4, false);
 		assertEquals(5, dHand4.size());
 				
 		// dealer busts
@@ -520,7 +520,7 @@ public class BlackjackTest extends TestCase {
 		deck5.addCard(new Card("D", "3"));
 		deck5.addCard(new Card("H", "8"));
 		deck5.addCard(new Card("S", "10"));
-		Blackjack.dealerTurn(pHand5, dHand5, deck5);
+		Blackjack.dealerTurn(pHand5, dHand5, deck5, false);
 		assertEquals(5, dHand5.size());
 				
 		// dealer get's a soft 17
@@ -530,7 +530,7 @@ public class BlackjackTest extends TestCase {
 		dHand6.addCard(new Card("S", "3"));
 		deck6.addCard(new Card("D", "3"));
 		deck6.addCard(new Card("S", "2"));
-		Blackjack.dealerTurn(pHand6, dHand6, deck6);
+		Blackjack.dealerTurn(pHand6, dHand6, deck6, false);
 		assertEquals(4, dHand6.size());
 		
 	}
