@@ -9,7 +9,6 @@ public class Blackjack {
 	
 	private static final int maxHandValue = 21;
 	private static Scanner fileScanner;
-	private static boolean usingFile = false;
 	public static boolean gameOver = false;
 	
 	
@@ -68,7 +67,6 @@ public class Blackjack {
 		
 		if (command.startsWith("f")) {
 			
-			usingFile = true;
 			System.out.println("Please enter the filename in src/main/resources (ex: filename.txt)");
 			command = "src/main/resources/" + playerConsole.nextLine();
 
@@ -103,7 +101,7 @@ public class Blackjack {
 	}
 	
 	
-	public static void playerTurn(DeckOrHand playerHand, DeckOrHand dealerHand, ArrayList<String> playerMovesFromFile, DeckOrHand deck, Scanner playerConsole) {
+	public static void playerTurn(DeckOrHand playerHand, DeckOrHand dealerHand, ArrayList<String> playerMovesFromFile, DeckOrHand deck, Scanner playerConsole, boolean usingFile) {
 		while(true) {
 			
 			System.out.print("The Player's hand: ");
