@@ -303,4 +303,33 @@ public class BlackjackTest extends TestCase {
 
 	}
 	
+	public void testDidBlackjackHappen() {
+		DeckOrHand pHand = new DeckOrHand();
+		DeckOrHand dHand = new DeckOrHand();
+		
+		// both have blackjack
+		pHand.addCard(new Card("C", "A"));
+		pHand.addCard(new Card("C", "J"));
+		dHand.addCard(new Card("H", "A"));
+		dHand.addCard(new Card("H", "K"));
+		assertEquals(dHand, didBlackjackHappen(pHand, dHand));
+		
+		// dealer has blackjack		
+		pHand.addCard(new Card("C", "3"));
+		pHand.addCard(new Card("C", "4"));
+		pHand.addCard(new Card("D", "4"));
+		pHand.addCard(new Card("D", "K"));
+		dHand.addCard(new Card("H", "A"));
+		dHand.addCard(new Card("H", "K"));
+		assertEquals(dHand, didBlackjackHappen(pHand, dHand));
+		
+		// player has blackjack		
+		pHand.addCard(new Card("C", "A"));
+		pHand.addCard(new Card("C", "J"));
+		dHand.addCard(new Card("H", "10"));
+		dHand.addCard(new Card("H", "J"));
+		assertEquals(pHand, didBlackjackHappen(pHand, dHand));
+		
+	}
+	
 }
