@@ -2,6 +2,7 @@ package blackjack;
 
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 //import static org.junit.Assert.*;
 //import static org.hamcrest.CoreMatchers.*;
@@ -345,22 +346,25 @@ public class BlackjackTest extends TestCase {
 		ArrayList<String> moves1 = new ArrayList<>();
 		ArrayList<String> moves2 = new ArrayList<>();
 		ArrayList<String> moves3 = new ArrayList<>();
+		Scanner scanner1 = new Scanner(System.in);
+		Scanner scanner2 = new Scanner(System.in);
+		Scanner scanner3 = new Scanner(System.in);
 		
 		// using file input
 		// using file Test1.txt
-		createDeckAndPickUI(deck1, moves1);
+		Blackjack.createDeckAndPickUI(deck1, moves1, scanner1);
 		assertEquals(9, deck1.size());
 		assertEquals(4, moves1.size());
 		
 		// using file input
 		// using file Test2.txt
-		createDeckAndPickUI(deck2, moves2);
+		Blackjack.createDeckAndPickUI(deck2, moves2, scanner2);
 		assertEquals(7, deck2.size());
 		assertEquals(2, moves2.size());
 		
 		
 		// using console input
-		createDeckAndPickUI(deck3, moves3);
+		Blackjack.createDeckAndPickUI(deck3, moves3, scanner3);
 		assertEquals(52, deck3.size());
 		assertEquals(0, moves3.size());
 	}
