@@ -304,31 +304,36 @@ public class BlackjackTest extends TestCase {
 	}
 	
 	public void testDidBlackjackHappen() {
-		DeckOrHand pHand = new DeckOrHand();
-		DeckOrHand dHand = new DeckOrHand();
+		DeckOrHand pHand1 = new DeckOrHand();
+		DeckOrHand dHand1 = new DeckOrHand();
+		DeckOrHand pHand2 = new DeckOrHand();
+		DeckOrHand dHand2 = new DeckOrHand();
+		DeckOrHand pHand3 = new DeckOrHand();
+		DeckOrHand dHand3 = new DeckOrHand();
 		
 		// both have blackjack
-		pHand.addCard(new Card("C", "A"));
-		pHand.addCard(new Card("C", "J"));
-		dHand.addCard(new Card("H", "A"));
-		dHand.addCard(new Card("H", "K"));
-		assertEquals(dHand, didBlackjackHappen(pHand, dHand));
+		pHand1.addCard(new Card("C", "A"));
+		pHand1.addCard(new Card("C", "J"));
+		dHand1.addCard(new Card("H", "A"));
+		dHand1.addCard(new Card("H", "K"));
+		assertEquals(dHand1, Blackjack.didBlackjackHappen(pHand1, dHand1));
 		
 		// dealer has blackjack		
-		pHand.addCard(new Card("C", "3"));
-		pHand.addCard(new Card("C", "4"));
-		pHand.addCard(new Card("D", "4"));
-		pHand.addCard(new Card("D", "K"));
-		dHand.addCard(new Card("H", "A"));
-		dHand.addCard(new Card("H", "K"));
-		assertEquals(dHand, didBlackjackHappen(pHand, dHand));
+		pHand2.addCard(new Card("C", "3"));
+		pHand2.addCard(new Card("C", "4"));
+		pHand2.addCard(new Card("D", "4"));
+		pHand2.addCard(new Card("D", "K"));
+		dHand2.addCard(new Card("H", "A"));
+		dHand2.addCard(new Card("H", "K"));
+		assertEquals(dHand2, Blackjack.didBlackjackHappen(pHand2, dHand2));
+
 		
 		// player has blackjack		
-		pHand.addCard(new Card("C", "A"));
-		pHand.addCard(new Card("C", "J"));
-		dHand.addCard(new Card("H", "10"));
-		dHand.addCard(new Card("H", "J"));
-		assertEquals(pHand, didBlackjackHappen(pHand, dHand));
+		pHand3.addCard(new Card("C", "A"));
+		pHand3.addCard(new Card("C", "J"));
+		dHand3.addCard(new Card("H", "10"));
+		dHand3.addCard(new Card("H", "J"));
+		assertEquals(pHand3, Blackjack.didBlackjackHappen(pHand3, dHand3));
 		
 	}
 	
