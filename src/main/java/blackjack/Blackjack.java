@@ -37,9 +37,11 @@ public class Blackjack {
 		else if (playerWin) {
 			System.out.println("\nThe Player has blackjack");
 			System.out.println("The Player wins! Congratulations!");
-			return dealerHand;
+			return playerHand;
 		}
-		
+		else {
+			return null;
+		}
 	}
 	
 }
