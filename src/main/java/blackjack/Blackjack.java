@@ -9,6 +9,8 @@ public class Blackjack {
 	
 	private static final int maxHandValue = 21;
 	private static Scanner fileScanner;
+	private static boolean usingFile = false;
+	public static boolean gameOver = false;
 	
 	
 	public static DeckOrHand didBlackjackHappen(DeckOrHand playerHand, DeckOrHand dealerHand) {
@@ -34,16 +36,19 @@ public class Blackjack {
 		if (dealerWin && playerWin) {
 			System.out.println("\nBoth the Dealer and the Player have blackjack");
 			System.out.println("Dealer wins... Better luck next time!");
+			gameOver = true;
 			return dealerHand;
 		}
 		else if (dealerWin) {
 			System.out.println("\nThe Dealer has blackjack");
 			System.out.println("The Dealer wins... Better luck next time!");
+			gameOver = true;
 			return dealerHand;
 		}
 		else if (playerWin) {
 			System.out.println("\nThe Player has blackjack");
 			System.out.println("The Player wins! Congratulations!");
+			gameOver = true;
 			return playerHand;
 		}
 		else {
@@ -63,6 +68,7 @@ public class Blackjack {
 		
 		if (command.startsWith("f")) {
 			
+			usingFile = true;
 			System.out.println("Please enter the filename in src/main/resources (ex: filename.txt)");
 			command = "src/main/resources/" + playerConsole.nextLine();
 
@@ -96,6 +102,55 @@ public class Blackjack {
 		}	
 	}
 	
-
+	
+	public static void playerTurn(DeckOrHand playerHand, DeckOrHand dealerHand, ArrayList<String> playerMovesFromFile, DeckOrHand deck, Scanner playerConsole) {
+		while(true) {
+			
+			System.out.print("The Player's hand: ");
+			System.out.print(playerHand.showHand());
+			System.out.print(", value: ");
+			System.out.println(playerHand.getHandValue());
+			
+			System.out.print("The Dealer's hand: ");
+			System.out.print(dealerHand.getCard(0).toString());
+			System.out.println(" [Face Down]");
+			
+//			if (gameOver == false) {
+//				if (didBlackjackHappen(playerHand, dealerHand) != null) {
+//					gameOver = true;
+//				}
+//			}
+			
+			String command;
+			System.out.println("\nDo you want to Hit (H) or Stand (S)?");
+			if (usingFile == false) {
+				command = playerConsole.nextLine();
+			} else {
+				command = playerMovesFromFile.get(0);
+				System.out.println(command);
+				playerMovesFromFile.remove(0);
+			}
+			
+			if (command.startsWith("H")) {
+			
+				playerHand.drawCard(deck);
+			
+				System.out.print("The Player draws a ");
+				System.out.println(playerHand.getCard(playerHand.size()-1).toString());
+					
+				if (playerHand.getHandValue() > maxHandValue) {
+					System.out.print("The Player's hand value is ");
+					System.out.println(playerHand.getHandValue());
+					System.out.println("\nUnfortunately the Player busts... better luck next time!");
+					gameOver = true;
+					break;
+				}	
+			}
+			else if (command.startsWith("S")) {
+				break;
+			}
+			
+		}
+	}
 	
 }
