@@ -337,4 +337,32 @@ public class BlackjackTest extends TestCase {
 		
 	}
 	
+	public void testCreateDeckAndPickUI() {
+		
+		DeckOrHand deck1 = new DeckOrHand();
+		DeckOrHand deck2 = new DeckOrHand();
+		DeckOrHand deck3 = new DeckOrHand();
+		ArrayList<String> moves1 = new ArrayList<>();
+		ArrayList<String> moves2 = new ArrayList<>();
+		ArrayList<String> moves3 = new ArrayList<>();
+		
+		// using file input
+		// using file Test1.txt
+		createDeckAndPickUI(deck1, moves1);
+		assertEquals(9, deck1.size());
+		assertEquals(4, moves1.size());
+		
+		// using file input
+		// using file Test2.txt
+		createDeckAndPickUI(deck2, moves2);
+		assertEquals(7, deck2.size());
+		assertEquals(2, moves2.size());
+		
+		
+		// using console input
+		createDeckAndPickUI(deck3, moves3);
+		assertEquals(52, deck3.size());
+		assertEquals(0, moves3.size());
+	}
+	
 }
