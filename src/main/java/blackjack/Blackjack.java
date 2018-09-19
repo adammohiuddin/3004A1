@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Blackjack {
 	
 	private static final int maxHandValue = 21;
+	private static final int dealerSoftValue = 17;
 	private static Scanner fileScanner;
 	public static boolean gameOver = false;
 	
@@ -149,6 +150,62 @@ public class Blackjack {
 			}
 			
 		}
+	}
+	
+	public static void dealerTurn(DeckOrHand playerHand, DeckOrHand dealerHand, DeckOrHand deck, boolean gameOver) {
+		
+		if (gameOver == false) {
+			if (didBlackjackHappen(playerHand, dealerHand) != null) {
+				gameOver = true;
+			}
+		}
+		
+		System.out.print("\nDealer's hand ");
+		System.out.print(dealerHand.showHand());
+		System.out.print(", value: ");
+		System.out.println(dealerHand.getHandValue());
+		
+		if (dealerHand.getHandValue() > playerHand.getHandValue() && gameOver == false) {
+			System.out.println("The Dealer has a better hand than The Player");
+			System.out.println("Unfortunately The Player loses... better luck next time!");
+			gameOver = true;
+		}
+		
+		if (gameOver == false) {
+			while((dealerHand.getHandValue() == dealerSoftValue && dealerHand.isAce11()) || (dealerHand.getHandValue() < dealerSoftValue)) {
+				dealerHand.drawCard(deck);
+				
+				System.out.print(", the Dealer draws a ");
+				System.out.print(dealerHand.getCard(dealerHand.size()-1).toString());
+				System.out.print(", value: ");
+				System.out.println(dealerHand.getHandValue());
+	
+			}
+		}
+
+		if ((dealerHand.getHandValue() > maxHandValue) && gameOver == false) {
+			System.out.println("\nThe Dealer busts!");
+			System.out.println("The Player wins! Congratulations!");
+			gameOver = true; 
+		}
+		
+		if ((playerHand.getHandValue() == dealerHand.getHandValue()) && gameOver == false) {
+			System.out.println("\nThe Player's hand and the Dealer's hand have the same value");
+			System.out.println("It is a push situation. You tie.");
+			gameOver = true;
+		}
+		
+		if ((playerHand.getHandValue() > dealerHand.getHandValue()) && gameOver == false) {
+			System.out.println("\nThe Player has the higher hand!");
+			System.out.println("The Player wins! Congratulations!");
+			gameOver = true; 
+		}
+		else if (gameOver == false) {
+			System.out.println("\nThe Dealer has the higher hand...");
+			System.out.println("Unfortunately the Player loses... better luck next time!");
+			gameOver = true;
+		}
+		
 	}
 	
 }
