@@ -2,16 +2,20 @@ package blackjack;
 
 
 import java.util.ArrayList;
-//import java.util.Scanner;
+import java.util.Scanner;
 
-//import static org.junit.Assert.*;
-//import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 import junit.framework.TestCase;
 
 public class BlackjackTest extends TestCase {
 
 	public void testCardGets() {
+		
+		System.out.println("-------------------------------");
+		System.out.println("Running testCardGets() (test 1)");
+		System.out.println("-------------------------------");
 		
 		Card card = new Card("S", "7");
 		assertEquals("S", card.getSuit());
@@ -34,6 +38,10 @@ public class BlackjackTest extends TestCase {
 	
 	public void testCardtoString() {
 		
+		System.out.println("-------------------------------");
+		System.out.println("Running testCardtoString() (test 2)");
+		System.out.println("-------------------------------");
+		
 		Card card1 = new Card("S", "2");
 		assertEquals("S2", card1.toString());
 		
@@ -49,6 +57,10 @@ public class BlackjackTest extends TestCase {
 	}
 	
 	public void testFullDeck() {
+		
+		System.out.println("-------------------------------");
+		System.out.println("Running testFullDeck() (test 3)");
+		System.out.println("-------------------------------");
 		
 		DeckOrHand deck = new DeckOrHand();
 		deck.makeDeck();
@@ -74,27 +86,30 @@ public class BlackjackTest extends TestCase {
 	
 	}
 	
-//	public void testShuffledDeck() {
-//		
-//		DeckOrHand deck = new DeckOrHand();
-//		deck.makeDeck();
-//		deck.shuffleDeck();
-//		
-//		assertThat("D8", not(equalTo(String.valueOf(deck.getCard(6)))));
-//		assertThat("D9", not(equalTo(String.valueOf(deck.getCard(7)))));
-//		
-//		assertThat("S8", not(equalTo(String.valueOf(deck.getCard(19)))));
-//		assertThat("S9", not(equalTo(String.valueOf(deck.getCard(20)))));
-//		
-//		assertThat("C8", not(equalTo(String.valueOf(deck.getCard(32)))));
-//		assertThat("C9", not(equalTo(String.valueOf(deck.getCard(33)))));
-//		
-//		assertThat("H8", not(equalTo(String.valueOf(deck.getCard(45)))));
-//		assertThat("H9", not(equalTo(String.valueOf(deck.getCard(46)))));
-//		
-//	}
+	public void testShuffledDeck() {
+		
+		System.out.println("-------------------------------");
+		System.out.println("Running testShuffledDeck() (test 4)");
+		System.out.println("-------------------------------");
+		
+		DeckOrHand deck = new DeckOrHand();
+		deck.makeDeck();
+		deck.shuffleDeck();
+		
+		assertThat("D8", not(equalTo(String.valueOf(deck.getCard(6)))));
+		assertThat("D9", not(equalTo(String.valueOf(deck.getCard(7)))));
+		
+		assertThat("C8", not(equalTo(String.valueOf(deck.getCard(32)))));
+		assertThat("C9", not(equalTo(String.valueOf(deck.getCard(33)))));
+		
+	}
+
 	
 	public void testDeckAddAndRemove() {
+		
+		System.out.println("-------------------------------");
+		System.out.println("Running testDeckAddAndRemove() (test 5)");
+		System.out.println("-------------------------------");
 		
 		DeckOrHand deck = new DeckOrHand();
 		Card card1 = new Card("S", "9");
@@ -123,7 +138,12 @@ public class BlackjackTest extends TestCase {
 	
 	public void testDeckSize() {
 		
-		DeckOrHand deck = new DeckOrHand();
+		System.out.println("-------------------------------");
+		System.out.println("Running testDeckSize() (test 6)");
+		System.out.println("-------------------------------");
+		
+		DeckOrHand deck1 = new DeckOrHand();
+		DeckOrHand deck2 = new DeckOrHand();
 		Card card1 = new Card("S", "9");
 		Card card2 = new Card("H", "2");
 		Card card3 = new Card("D", "K");
@@ -134,28 +154,35 @@ public class BlackjackTest extends TestCase {
 		Card card8 = new Card("D", "A");
 		Card card9 = new Card("C", "A");
 		
-		deck.addCard(card1);
-		deck.addCard(card2);
-		deck.addCard(card3);
-		deck.addCard(card4);
-		deck.addCard(card5);
-		deck.addCard(card6);
-		deck.addCard(card7);
-		deck.addCard(card8);
-		deck.addCard(card9);
+		deck1.addCard(card1);
+		deck1.addCard(card2);
+		deck1.addCard(card3);
+		deck1.addCard(card4);
+		deck1.addCard(card5);
+		deck1.addCard(card6);
+		deck1.addCard(card7);
+		deck1.addCard(card8);
+		deck1.addCard(card9);
 		
-		assertEquals(9, deck.size());
+		assertEquals(9, deck1.size());
 			
-		deck.removeCard(6);
-		deck.removeCard(5);
-		deck.removeCard(3);
-		deck.removeCard(1);
+		deck1.removeCard(6);
+		deck1.removeCard(5);
+		deck1.removeCard(3);
+		deck1.removeCard(1);
 		
-		assertEquals(5, deck.size());
+		assertEquals(5, deck1.size());
+		
+		deck2.makeDeck();
+		assertEquals(52, deck2.size());
 		
 	}
 	
 	public void testDeckDraw() {
+		
+		System.out.println("-------------------------------");
+		System.out.println("Running testDeckDraw() (test 7)");
+		System.out.println("-------------------------------");
 		
 		DeckOrHand deck = new DeckOrHand();
 		Card card1 = new Card("S", "9");
@@ -181,6 +208,11 @@ public class BlackjackTest extends TestCase {
 	}
 	
 	public void testShowingHand() {
+		
+		System.out.println("-------------------------------");
+		System.out.println("Running testShowingHand() (test 8)");
+		System.out.println("-------------------------------");
+		
 		DeckOrHand hand = new DeckOrHand();
 		Card card1 = new Card("H", "7");
 		Card card2 = new Card("C", "Q");
@@ -202,6 +234,11 @@ public class BlackjackTest extends TestCase {
 	}
 	
 	public void testValueOfHand() {
+	
+		System.out.println("-------------------------------");
+		System.out.println("Running testValueOfHand() (test 9)");
+		System.out.println("-------------------------------");
+		
 		DeckOrHand hand1 = new DeckOrHand();
 		DeckOrHand hand2 = new DeckOrHand();
 		DeckOrHand hand3 = new DeckOrHand();
@@ -279,6 +316,11 @@ public class BlackjackTest extends TestCase {
 	}
 	
 	public void testIsAce11() {
+		
+		System.out.println("-------------------------------");
+		System.out.println("Running testIsAce11() (test 10)");
+		System.out.println("-------------------------------");
+		
 		DeckOrHand hand1 = new DeckOrHand();
 		hand1.addCard(new Card("H", "Q"));
 		hand1.addCard(new Card("C", "A"));
@@ -291,6 +333,11 @@ public class BlackjackTest extends TestCase {
 	}
 	
 	public void testMakeDeckFromFile() {
+		
+		System.out.println("-------------------------------");
+		System.out.println("Running testMakeDeckFromFile() (test 11)");
+		System.out.println("-------------------------------");
+		
 		ArrayList<String> fileInput = new ArrayList<String>();
 		fileInput.add("HQ");
 		fileInput.add("C4");
@@ -304,151 +351,178 @@ public class BlackjackTest extends TestCase {
 
 	}
 	
-//	public void testDidBlackjackHappen() {
-//		DeckOrHand pHand1 = new DeckOrHand();
-//		DeckOrHand dHand1 = new DeckOrHand();
-//		DeckOrHand pHand2 = new DeckOrHand();
-//		DeckOrHand dHand2 = new DeckOrHand();
-//		DeckOrHand pHand3 = new DeckOrHand();
-//		DeckOrHand dHand3 = new DeckOrHand();
-//		
-//		// both have blackjack
-//		pHand1.addCard(new Card("C", "A"));
-//		pHand1.addCard(new Card("C", "J"));
-//		dHand1.addCard(new Card("H", "A"));
-//		dHand1.addCard(new Card("H", "K"));
-//		assertEquals(dHand1, Blackjack.didBlackjackHappen(pHand1, dHand1));
-//		
-//		// dealer has blackjack		
-//		pHand2.addCard(new Card("C", "3"));
-//		pHand2.addCard(new Card("C", "4"));
-//		pHand2.addCard(new Card("D", "4"));
-//		pHand2.addCard(new Card("D", "K"));
-//		dHand2.addCard(new Card("H", "A"));
-//		dHand2.addCard(new Card("H", "K"));
-//		assertEquals(dHand2, Blackjack.didBlackjackHappen(pHand2, dHand2));
-//
-//		
-//		// player has blackjack		
-//		pHand3.addCard(new Card("C", "A"));
-//		pHand3.addCard(new Card("C", "J"));
-//		dHand3.addCard(new Card("H", "10"));
-//		dHand3.addCard(new Card("H", "J"));
-//		assertEquals(pHand3, Blackjack.didBlackjackHappen(pHand3, dHand3));
-//		
-//	}
+	public void testDidBlackjackHappen() {
+		
+		System.out.println("-------------------------------");
+		System.out.println("Running testDidBlackjackHappen() (test 12)");
+		System.out.println("-------------------------------");
+		
+		DeckOrHand pHand1 = new DeckOrHand();
+		DeckOrHand dHand1 = new DeckOrHand();
+		DeckOrHand pHand2 = new DeckOrHand();
+		DeckOrHand dHand2 = new DeckOrHand();
+		DeckOrHand pHand3 = new DeckOrHand();
+		DeckOrHand dHand3 = new DeckOrHand();
+		
+		// both have blackjack
+		pHand1.addCard(new Card("C", "A"));
+		pHand1.addCard(new Card("C", "J"));
+		dHand1.addCard(new Card("H", "A"));
+		dHand1.addCard(new Card("H", "K"));
+		assertEquals(dHand1, Blackjack.didBlackjackHappen(pHand1, dHand1));
+		
+		// dealer has blackjack		
+		pHand2.addCard(new Card("C", "3"));
+		pHand2.addCard(new Card("C", "4"));
+		pHand2.addCard(new Card("D", "4"));
+		pHand2.addCard(new Card("D", "K"));
+		dHand2.addCard(new Card("H", "A"));
+		dHand2.addCard(new Card("H", "K"));
+		assertEquals(dHand2, Blackjack.didBlackjackHappen(pHand2, dHand2));
+
+		
+		// player has blackjack		
+		pHand3.addCard(new Card("C", "A"));
+		pHand3.addCard(new Card("C", "J"));
+		dHand3.addCard(new Card("H", "10"));
+		dHand3.addCard(new Card("H", "J"));
+		assertEquals(pHand3, Blackjack.didBlackjackHappen(pHand3, dHand3));
+		
+	}
 	
-//	public void testCreateDeckAndPickUI() {
-//		
-//		DeckOrHand deck1 = new DeckOrHand();
-//		DeckOrHand deck2 = new DeckOrHand();
-//		DeckOrHand deck3 = new DeckOrHand();
-//		ArrayList<String> moves1 = new ArrayList<>();
-//		ArrayList<String> moves2 = new ArrayList<>();
-//		ArrayList<String> moves3 = new ArrayList<>();
-//		Scanner scanner1 = new Scanner(System.in);
-//		Scanner scanner2 = new Scanner(System.in);
-//		Scanner scanner3 = new Scanner(System.in);
-//		
-//		// using file input
-//		// using file Test1.txt
-//		Blackjack.createDeckAndPickUI(deck1, moves1, scanner1);
-//		assertEquals(9, deck1.size());
-//		assertEquals(4, moves1.size());
-//		
-//		// using file input
-//		// using file Test2.txt
-//		Blackjack.createDeckAndPickUI(deck2, moves2, scanner2);
-//		assertEquals(7, deck2.size());
-//		assertEquals(2, moves2.size());
-//		
-//		
-//		// using console input
-//		Blackjack.createDeckAndPickUI(deck3, moves3, scanner3);
-//		assertEquals(52, deck3.size());
-//		assertEquals(0, moves3.size());
-//		
-//	}
+	public void testCreateDeckAndPickUI() {
+		
+		System.out.println("-------------------------------");
+		System.out.println("Running testCreateDeckAndPickUI() (test 13)");
+		System.out.println("Actions:");
+		System.out.println("Choose file Test1.txt");
+		System.out.println("Choose file Test2.txt");
+		System.out.println("Choose console");
+		System.out.println("-------------------------------");
+		
+		DeckOrHand deck1 = new DeckOrHand();
+		DeckOrHand deck2 = new DeckOrHand();
+		DeckOrHand deck3 = new DeckOrHand();
+		ArrayList<String> moves1 = new ArrayList<>();
+		ArrayList<String> moves2 = new ArrayList<>();
+		ArrayList<String> moves3 = new ArrayList<>();
+		Scanner scanner1 = new Scanner(System.in);
+		Scanner scanner2 = new Scanner(System.in);
+		Scanner scanner3 = new Scanner(System.in);
+		
+		// using file input
+		// using file Test1.txt
+		Blackjack.createDeckAndPickUI(deck1, moves1, scanner1);
+		assertEquals(9, deck1.size());
+		assertEquals(4, moves1.size());
+		
+		// using file input
+		// using file Test2.txt
+		Blackjack.createDeckAndPickUI(deck2, moves2, scanner2);
+		assertEquals(7, deck2.size());
+		assertEquals(2, moves2.size());
+		
+		
+		// using console input
+		Blackjack.createDeckAndPickUI(deck3, moves3, scanner3);
+		assertEquals(52, deck3.size());
+		assertEquals(0, moves3.size());
+		
+	}
 	
-//	public void testPlayerTurn() {
-//		DeckOrHand pHand1 = new DeckOrHand();
-//		DeckOrHand pHand2 = new DeckOrHand();
-//		DeckOrHand pHand3 = new DeckOrHand();
-//		DeckOrHand pHand4 = new DeckOrHand();
-//		DeckOrHand dHand1 = new DeckOrHand();
-//		DeckOrHand dHand2 = new DeckOrHand();
-//		DeckOrHand dHand3 = new DeckOrHand();
-//		DeckOrHand dHand4 = new DeckOrHand();
-//		DeckOrHand deck1 = new DeckOrHand();
-//		DeckOrHand deck2 = new DeckOrHand();
-//		DeckOrHand deck3 = new DeckOrHand();
-//		DeckOrHand deck4 = new DeckOrHand();
-//		ArrayList<String> moves1 = new ArrayList<>();
-//		ArrayList<String> moves2 = new ArrayList<>();
-//		Scanner scanner1 = new Scanner(System.in);
-//		Scanner scanner2 = new Scanner(System.in);
-//		Scanner scanner3 = new Scanner(System.in);
-//		Scanner scanner4 = new Scanner(System.in);
-//		
-//		// using file input
-//		// hit then stand
-//		pHand1.addCard(new Card("H", "5"));
-//		pHand1.addCard(new Card("C", "3"));
-//		dHand1.addCard(new Card("D", "A"));
-//		dHand1.addCard(new Card("S", "9"));
-//		moves1.add("H");
-//		moves1.add("S");
-//		deck1.addCard(new Card("D", "3"));
-//		deck1.addCard(new Card("H", "8"));
-//		deck1.addCard(new Card("H", "10"));
-//		Blackjack.playerTurn(pHand1, dHand1, moves1, deck1, scanner1, true);
-//		assertEquals(3, pHand1.size());
-//		
-//		// using file input
-//		// hit then bust
-//		pHand2.addCard(new Card("H", "5"));
-//		pHand2.addCard(new Card("C", "3"));
-//		dHand2.addCard(new Card("S", "9"));
-//		dHand2.addCard(new Card("D", "A"));
-//		moves2.add("H");
-//		moves2.add("H");
-//		moves2.add("H");
-//		moves2.add("H");
-//		deck2.addCard(new Card("D", "3"));
-//		deck2.addCard(new Card("H", "8"));
-//		deck2.addCard(new Card("H", "10"));
-//		deck2.addCard(new Card("S", "6"));
-//		Blackjack.playerTurn(pHand2, dHand2, moves2, deck2, scanner2, true);
-//		assertEquals(5, pHand2.size());
-//		
-//		// using console input
-//		// hit then stand
-//		pHand3.addCard(new Card("H", "5"));
-//		pHand3.addCard(new Card("C", "3"));
-//		dHand3.addCard(new Card("D", "A"));
-//		dHand3.addCard(new Card("S", "9"));
-//		deck3.addCard(new Card("D", "3"));
-//		deck3.addCard(new Card("H", "8"));
-//		deck3.addCard(new Card("H", "10"));
-//		Blackjack.playerTurn(pHand3, dHand3, moves1, deck3, scanner3, false);
-//		assertEquals(3, pHand1.size());
-//		
-//		// using console input
-//		// hit then bust
-//		pHand4.addCard(new Card("H", "5"));
-//		pHand4.addCard(new Card("C", "3"));
-//		dHand4.addCard(new Card("S", "9"));
-//		dHand4.addCard(new Card("D", "A"));
-//		deck4.addCard(new Card("D", "3"));
-//		deck4.addCard(new Card("H", "8"));
-//		deck4.addCard(new Card("H", "10"));
-//		deck4.addCard(new Card("S", "6"));
-//		Blackjack.playerTurn(pHand3, dHand3, moves2, deck3, scanner4, false);
-//		assertEquals(5, pHand2.size());
-//		
-//	}
+	public void testPlayerTurn() {
+		
+		System.out.println("-------------------------------");
+		System.out.println("Running testPlayerTurn() (test 14)");
+		System.out.println("Actions:");
+		System.out.println("Hit");
+		System.out.println("Stand");
+		System.out.println("Hit");
+		System.out.println("Hit");
+		System.out.println("-------------------------------");
+		
+		DeckOrHand pHand1 = new DeckOrHand();
+		DeckOrHand pHand2 = new DeckOrHand();
+		DeckOrHand pHand3 = new DeckOrHand();
+		DeckOrHand pHand4 = new DeckOrHand();
+		DeckOrHand dHand1 = new DeckOrHand();
+		DeckOrHand dHand2 = new DeckOrHand();
+		DeckOrHand dHand3 = new DeckOrHand();
+		DeckOrHand dHand4 = new DeckOrHand();
+		DeckOrHand deck1 = new DeckOrHand();
+		DeckOrHand deck2 = new DeckOrHand();
+		DeckOrHand deck3 = new DeckOrHand();
+		DeckOrHand deck4 = new DeckOrHand();
+		ArrayList<String> moves1 = new ArrayList<>();
+		ArrayList<String> moves2 = new ArrayList<>();
+		Scanner scanner1 = new Scanner(System.in);
+		Scanner scanner2 = new Scanner(System.in);
+		Scanner scanner3 = new Scanner(System.in);
+		Scanner scanner4 = new Scanner(System.in);
+		
+		// using file input
+		// hit then stand
+		pHand1.addCard(new Card("H", "5"));
+		pHand1.addCard(new Card("C", "3"));
+		dHand1.addCard(new Card("D", "A"));
+		dHand1.addCard(new Card("S", "9"));
+		moves1.add("H");
+		moves1.add("S");
+		deck1.addCard(new Card("D", "3"));
+		deck1.addCard(new Card("H", "8"));
+		deck1.addCard(new Card("H", "10"));
+		Blackjack.playerTurn(pHand1, dHand1, moves1, deck1, scanner1, true);
+		assertEquals(3, pHand1.size());
+		
+		// using file input
+		// hit then bust
+		pHand2.addCard(new Card("H", "5"));
+		pHand2.addCard(new Card("C", "3"));
+		dHand2.addCard(new Card("S", "9"));
+		dHand2.addCard(new Card("D", "A"));
+		moves2.add("H");
+		moves2.add("H");
+		moves2.add("H");
+		moves2.add("H");
+		deck2.addCard(new Card("D", "3"));
+		deck2.addCard(new Card("H", "8"));
+		deck2.addCard(new Card("H", "10"));
+		deck2.addCard(new Card("S", "6"));
+		Blackjack.playerTurn(pHand2, dHand2, moves2, deck2, scanner2, true);
+		assertEquals(5, pHand2.size());
+		
+		// using console input
+		// hit then stand
+		pHand3.addCard(new Card("H", "5"));
+		pHand3.addCard(new Card("C", "3"));
+		dHand3.addCard(new Card("D", "A"));
+		dHand3.addCard(new Card("S", "9"));
+		deck3.addCard(new Card("D", "3"));
+		deck3.addCard(new Card("H", "8"));
+		deck3.addCard(new Card("H", "10"));
+		Blackjack.playerTurn(pHand3, dHand3, moves1, deck3, scanner3, false);
+		assertEquals(3, pHand1.size());
+		
+		// using console input
+		// hit then bust
+		pHand4.addCard(new Card("H", "5"));
+		pHand4.addCard(new Card("C", "3"));
+		dHand4.addCard(new Card("S", "9"));
+		dHand4.addCard(new Card("D", "A"));
+		deck4.addCard(new Card("D", "3"));
+		deck4.addCard(new Card("H", "8"));
+		deck4.addCard(new Card("H", "10"));
+		deck4.addCard(new Card("S", "6"));
+		Blackjack.playerTurn(pHand3, dHand3, moves2, deck3, scanner4, false);
+		assertEquals(5, pHand2.size());
+		
+	}
 	
 	public void testDealerTurn() {
+	
+		System.out.println("-------------------------------");
+		System.out.println("Running testDealerTurn() (test 15)");
+		System.out.println("-------------------------------");
 		
 		DeckOrHand pHand1 = new DeckOrHand();
 		DeckOrHand pHand2 = new DeckOrHand();
