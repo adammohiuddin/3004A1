@@ -1,0 +1,1 @@
+S3 D10 S5 C4 H H S2 S CA
