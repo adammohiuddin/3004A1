@@ -161,6 +161,10 @@ public class Blackjack {
 					System.out.print("The value of the Player's hand is: ");
 					System.out.println(playerHand.getHandValue());
 					System.out.println("Unfortunately the Player busts... better luck next time!");
+					System.out.print("The Dealer's hand is: ");
+					System.out.println(dealerHand.showHand());
+					System.out.print("The value of the Dealer's hand is: ");
+					System.out.println(dealerHand.getHandValue());
 					gameOver = true;
 					break;
 				}	
