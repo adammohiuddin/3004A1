@@ -38,19 +38,31 @@ public class Blackjack {
 		}
 		
 		if (dealerWin && playerWin) {
-			System.out.println("\nBoth the Dealer and the Player have blackjack");
-			System.out.println("Dealer wins... Better luck next time!");
+			System.out.println("Both the Dealer and the Player have blackjack.");
+			System.out.print("The Dealer's hand is: ");
+			System.out.println(dealerHand.showHand());
+			System.out.print("The value of the Dealer's hand is: ");
+			System.out.println(dealerHand.getHandValue());
+			System.out.println("The Dealer wins... Better luck next time!");
 			gameOver = true;
 			return dealerHand;
 		}
 		else if (dealerWin) {
-			System.out.println("\nThe Dealer has blackjack");
+			System.out.println("The Dealer has blackjack.");
+			System.out.print("The Dealer's hand is: ");
+			System.out.println(dealerHand.showHand());
+			System.out.print("The value of the Dealer's hand is: ");
+			System.out.println(dealerHand.getHandValue());
 			System.out.println("The Dealer wins... Better luck next time!");
 			gameOver = true;
 			return dealerHand;
 		}
 		else if (playerWin) {
-			System.out.println("\nThe Player has blackjack");
+			System.out.println("The Player has blackjack.");
+			System.out.print("The Dealer's hand is: ");
+			System.out.println(dealerHand.showHand());
+			System.out.print("The value of the Dealer's hand is: ");
+			System.out.println(dealerHand.getHandValue());
 			System.out.println("The Player wins! Congratulations!");
 			gameOver = true;
 			return playerHand;
@@ -73,7 +85,7 @@ public class Blackjack {
 		if (command.startsWith("f")) {
 			
 			usingFile = true;
-			System.out.println("Please enter the filename in src/main/resources (ex: filename.txt)");
+			System.out.println("Please enter the filename in src/main/resources (ex: filename.txt).");
 			command = "src/main/resources/" + playerConsole.nextLine();
 
 			try {
@@ -108,25 +120,28 @@ public class Blackjack {
 	
 	
 	public static void playerTurn(DeckOrHand playerHand, DeckOrHand dealerHand, ArrayList<String> playerMovesFromFile, DeckOrHand deck, Scanner playerConsole, boolean usingFile) {
+		
+		System.out.print("The Player's hand is: ");
+		System.out.println(playerHand.showHand());
+		
+		
 		while(true) {
 			
-			System.out.print("The Player's hand: ");
-			System.out.print(playerHand.showHand());
-			System.out.print(", value: ");
+			System.out.print("The value of the Player's hand is: ");
 			System.out.println(playerHand.getHandValue());
 			
-			System.out.print("The Dealer's hand: ");
+			System.out.print("The Dealer's hand is: ");
 			System.out.print(dealerHand.getCard(0).toString());
 			System.out.println(" [Face Down]");
 			
 //			if (gameOver == false) {
 //				if (didBlackjackHappen(playerHand, dealerHand) != null) {
-//					gameOver = true;
+//					break;
 //				}
 //			}
 			
 			String command;
-			System.out.println("\nDo you want to Hit (H) or Stand (S)?");
+			System.out.println("Do you want to Hit (H) or Stand (S)?");
 			if (usingFile == false) {
 				command = playerConsole.nextLine();
 			} else {
@@ -139,18 +154,22 @@ public class Blackjack {
 			
 				playerHand.drawCard(deck);
 			
-				System.out.print("The Player draws a ");
+				System.out.print("The Player draws a: ");
 				System.out.println(playerHand.getCard(playerHand.size()-1).toString());
 					
 				if (playerHand.getHandValue() > maxHandValue) {
-					System.out.print("The Player's hand value is ");
+					System.out.print("The value of the Player's hand is: ");
 					System.out.println(playerHand.getHandValue());
-					System.out.println("\nUnfortunately the Player busts... better luck next time!");
+					System.out.println("Unfortunately the Player busts... better luck next time!");
 					gameOver = true;
 					break;
 				}	
 			}
 			else if (command.startsWith("S")) {
+				System.out.print("The Player's hand is: ");
+				System.out.println(playerHand.showHand());
+				System.out.print("The value of the Player's hand is: ");
+				System.out.println(playerHand.getHandValue());
 				break;
 			}
 			
@@ -164,15 +183,16 @@ public class Blackjack {
 				gameOver = true;
 			}
 		}
-		
-		System.out.print("\nDealer's hand ");
-		System.out.print(dealerHand.showHand());
-		System.out.print(", value: ");
-		System.out.println(dealerHand.getHandValue());
+		if (gameOver == false) {
+			System.out.print("The Dealer's hand is: ");
+			System.out.println(dealerHand.showHand());
+			System.out.print("The value of the Dealer's hand is: ");
+			System.out.println(dealerHand.getHandValue());
+		}
 		
 		if (dealerHand.getHandValue() > playerHand.getHandValue() && gameOver == false) {
-			System.out.println("The Dealer has a better hand than The Player");
-			System.out.println("Unfortunately The Player loses... better luck next time!");
+			System.out.println("The Dealer has a better hand than the Player.");
+			System.out.println("Unfortunately the Player loses... better luck next time!");
 			gameOver = true;
 		}
 		
@@ -180,33 +200,37 @@ public class Blackjack {
 			while((dealerHand.getHandValue() == dealerSoftValue && dealerHand.isAce11()) || (dealerHand.getHandValue() < dealerSoftValue)) {
 				dealerHand.drawCard(deck);
 				
-				System.out.print(", the Dealer draws a ");
-				System.out.print(dealerHand.getCard(dealerHand.size()-1).toString());
-				System.out.print(", value: ");
-				System.out.println(dealerHand.getHandValue());
+				System.out.print("The Dealer draws a: ");
+				System.out.println(dealerHand.getCard(dealerHand.size()-1).toString());
 	
 			}
 		}
+		if (gameOver == false) {
+			System.out.print("The Dealer's hand is: ");
+			System.out.println(dealerHand.showHand());
+			System.out.print("The value of the Dealer's hand is: ");
+			System.out.println(dealerHand.getHandValue());
+		}
 
 		if ((dealerHand.getHandValue() > maxHandValue) && gameOver == false) {
-			System.out.println("\nThe Dealer busts!");
+			System.out.println("The Dealer busts.");
 			System.out.println("The Player wins! Congratulations!");
 			gameOver = true; 
 		}
 		
 		if ((playerHand.getHandValue() == dealerHand.getHandValue()) && gameOver == false) {
-			System.out.println("\nThe Player's hand and the Dealer's hand have the same value");
+			System.out.println("The Player's hand and the Dealer's hand have the same value.");
 			System.out.println("It is a push situation. You tie.");
 			gameOver = true;
 		}
 		
 		if ((playerHand.getHandValue() > dealerHand.getHandValue()) && gameOver == false) {
-			System.out.println("\nThe Player has the higher hand!");
+			System.out.println("The Player has the higher hand.");
 			System.out.println("The Player wins! Congratulations!");
 			gameOver = true; 
 		}
 		else if (gameOver == false) {
-			System.out.println("\nThe Dealer has the higher hand...");
+			System.out.println("The Dealer has the higher hand.");
 			System.out.println("Unfortunately the Player loses... better luck next time!");
 			gameOver = true;
 		}
