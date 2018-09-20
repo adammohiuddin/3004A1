@@ -3,6 +3,8 @@ package blackjack;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Blackjack {
@@ -15,6 +17,8 @@ public class Blackjack {
 	
 	public static boolean gameOver = false;
 	private static boolean usingFile = false;
+	
+	private static final List<String> playerCommands = Arrays.asList("H", "S");
 	
 	
 	public static DeckOrHand didBlackjackHappen(DeckOrHand playerHand, DeckOrHand dealerHand) {
@@ -96,19 +100,27 @@ public class Blackjack {
 				e.printStackTrace();
 			}
 			
-			String tokenFromFile;
-			cardsFromFile = new ArrayList<>();
-			
-			while (fileScanner.hasNext()) {
-				tokenFromFile = fileScanner.next();
-				if (tokenFromFile.length() > 1) {
-					cardsFromFile.add(tokenFromFile);
-				} else {
-					playerMovesFromFile.add(tokenFromFile);
+			if (validFileContents(command)) {
+				
+				String tokenFromFile;
+				cardsFromFile = new ArrayList<>();
+				
+				while (fileScanner.hasNext()) {
+					tokenFromFile = fileScanner.next();
+					if (tokenFromFile.length() > 1) {
+						cardsFromFile.add(tokenFromFile);
+					} else {
+						playerMovesFromFile.add(tokenFromFile);
+					}
 				}
+	
+				deck.makeDeckFromFile(cardsFromFile);
+			} else {
+				fileScanner.close();
+				// stop program
+				System.exit(0);
 			}
-
-			deck.makeDeckFromFile(cardsFromFile);
+			
 			fileScanner.close();
 			
 		}
@@ -116,6 +128,72 @@ public class Blackjack {
 			deck.makeDeck();
 			deck.shuffleDeck();
 		}	
+	}
+	
+	
+	public static boolean validFileContents(String fileName) {
+		
+		DeckOrHand fullDeck = new DeckOrHand();
+		DeckOrHand duplicateDeck = new DeckOrHand();
+		Scanner validFileScanner = null;
+		String cardSuit;
+		String cardRank;
+
+		try {
+			validFileScanner = new Scanner(new File(fileName));
+			validFileScanner.useDelimiter(" ");
+		} catch (FileNotFoundException e) {
+			System.out.println("Could not open filename entered. Please try again.");
+			e.printStackTrace();
+		}
+
+		fullDeck.makeDeck();
+		duplicateDeck.makeDeck();
+		
+		String tokenFromFile = "";
+		
+		while (validFileScanner.hasNext()) {
+			tokenFromFile = validFileScanner.next();
+			
+			if (tokenFromFile.length() > 1) {
+				// found a card
+				cardSuit = tokenFromFile.substring(0, 1);
+				cardRank = tokenFromFile.substring(1);
+				Card cardToCheck = new Card(cardSuit, cardRank);
+				
+				if (!fullDeck.validSuit(cardSuit) || !fullDeck.validRank(cardRank)) {
+					System.out.println("Found invalid Suit or Rank for card:  " + tokenFromFile);
+					System.out.println("Please try a different file or modify this one.");
+					return false;
+				}
+				if (!(duplicateDeck.findAndRemoveCard(cardToCheck))) {
+					System.out.println("Duplicate card found in file: " + cardToCheck.toString());
+					System.out.println("Please try a different file or modify this one.");
+					return false;
+				}
+				
+			} else {
+				// found a command
+				if (!playerCommands.contains(tokenFromFile)) {
+					System.out.println("Invalid command found: " + tokenFromFile);
+					System.out.println("Please try a different file or modify this one.");
+					return false;
+				} 
+				else {
+					// valid command, but might not have a card after it
+					if (validFileScanner.hasNext()) {
+						if (!validFileScanner.hasNext(".*((S|C|H|D)(2|3|4|5|6|7|8|9|10|J|Q|K|A)).*")) {
+							System.out.println("Did not find card after command: " + tokenFromFile);
+							System.out.println("Please try a different file or modify this one.");
+							return false;
+						}
+					}
+				}
+			}
+		}
+		
+		validFileScanner.close();
+		return true;
 	}
 	
 	

@@ -23,6 +23,24 @@ public class DeckOrHand {
 		}
 	}
 	
+	public boolean validSuit(String s) {
+		return suit.contains(s);
+	}
+	
+	public boolean validRank(String r) {
+		return rank.contains(r);
+	}
+	
+	public boolean findAndRemoveCard(Card c) {
+		for (int i = 0; i < this.size(); i++) {
+			if (this.getCard(i).getSuit().equalsIgnoreCase(c.getSuit()) && this.getCard(i).getRank().equalsIgnoreCase(c.getRank())) {
+				removeCard(i);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void makeDeckFromFile(ArrayList<String> cardInput) {
 		String s, r;
 		for (String string : cardInput) {
